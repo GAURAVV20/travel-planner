@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+crewai>=1.13.0
+crewai-tools>=1.13.0
+python-dotenv

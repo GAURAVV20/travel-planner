@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Travel Itinerary Planner
 
 A Gen AI project using an Agentic AI approach.
@@ -81,3 +82,6 @@ User Input (destination, budget, days)
 
 The system prompt instructs Claude to act as multiple sub-agents internally,
 reason through each role, and return a structured JSON itinerary.
+=======
+# Travel-Itinerary-Guide
+>>>>>>> 11c6a9c2789ee0252a4850819394c93fc772de14
