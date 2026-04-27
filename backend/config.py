@@ -6,6 +6,7 @@ sets up the LLM, and defines currency context constants.
 """
 
 import os
+os.environ["CREWAI_TELEMETRY"] = "false"
 from dotenv import load_dotenv
 from crewai.llm import LLM
 load_dotenv()

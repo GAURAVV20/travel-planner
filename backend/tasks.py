@@ -32,8 +32,13 @@ def create_tasks(agents, destination, from_location, budget, days, start_date, e
             f"2. 'top tourist attractions {destination} entry fee {currency}'\n"
             f"3. 'average food cost per day {destination} tourist {currency}'\n"
             f"4. 'local transport cost {destination} per day {currency}'\n\n"
+            f"5. 'best restaurants {destination} must visit {currency}'\n"
+            f"6. 'top rated tourist spots {destination} with details'\n\n"
+            f"For each attraction found, note the exact name, what it's known for, "
+            f"and approximate cost. This will be used to create a detailed itinerary.\n"
             f"Travel style: {travel_style if travel_style else 'general tourist'}\n"
             f"Only report prices actually found in search results."
+            
         ),
         expected_output=(
             f"Hotel nightly rate, top 5 activities with costs, "
@@ -68,8 +73,22 @@ def create_tasks(agents, destination, from_location, budget, days, start_date, e
     itinerary_task = Task(
         description=(
             f"Compile all data into a {days}-day itinerary for {destination}.\n"
+            f"Use REAL, SPECIFIC place names — never say 'Go to a place' or 'Visit a landmark'.\n"
+            f"Every morning, afternoon and evening entry MUST include:\n"
+            f"- The EXACT name of the place, restaurant, or activity\n"
+            f"- What the traveller will do there specifically\n"
+            f"- Any relevant tips (best time to visit, what to order, what to see)\n\n"
+            f"BAD example: 'Visit a famous temple'\n"
+            f"GOOD example: 'Visit Golconda Fort — explore the Sound & Light Show area, "
+            f"walk up to the Bala Hisar gate, and enjoy panoramic views of Hyderabad. "
+            f"Best visited in the morning to avoid heat. Entry fee approx INR 100.'\n\n"
+            f"BAD example: 'Lunch and rest'\n"
+            f"GOOD example: 'Lunch at Paradise Restaurant, Secunderabad — famous for "
+            f"authentic Hyderabadi Dum Biryani. Must try the Mirchi ka Salan as a side dish.'\n\n"
             f"Use REAL place names and the verified budget breakdown.\n"
             f"Each day must show the actual date starting from {start_date}.\n\n"
+            f"IMPORTANT: The budgetBreakdown MUST have real non-zero numbers for "
+            f"flights, accommodation, food and activities. Do NOT put everything in misc.\n\n"
             f"Return ONLY a raw valid JSON object — no markdown, no backticks:\n"
             "{\n"
             '  "destination": "string",\n'

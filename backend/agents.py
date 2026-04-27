@@ -59,7 +59,7 @@ def create_agents(destination, from_location, budget, days, start_date, end_date
         ),
         llm=llm,
         verbose=True,
-        max_iter=3
+        max_iter=2
     )
 
     # Agent 4: Itinerary Agent
@@ -75,7 +75,7 @@ def create_agents(destination, from_location, budget, days, start_date, end_date
         ),
         llm=llm,
         verbose=True,
-        max_iter=3
+        max_iter=2
     )
 
     return flight_agent, research_agent, budget_agent, itinerary_agent
